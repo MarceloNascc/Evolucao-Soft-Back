@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define('user', {
+  const User = sequelize.define('User', {
     nome: DataTypes.STRING,
     senha: DataTypes.STRING
   }, {
@@ -19,11 +19,11 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
   };
 
-  TUsuario.prototype.checkPassword = function(password) {
+  User.prototype.checkPassword = function(password) {
     return bcrypt.compare(password, this.senha);
   }
 
-  TUsuario.prototype.generateToken = function() {
+  User.prototype.generateToken = function() {
     return jwt.sign({ id: this.id }, process.env.SECRET, { expiresIn: 86400 });
   }
 
