@@ -24,8 +24,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       dataMatricula: {
-        type: Sequelize.DATE,
-        defaultValue: new Date()
+        type: Sequelize.DATE
       },
       createdAt: {
         allowNull: false,

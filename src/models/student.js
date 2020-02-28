@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     hooks: {
       beforeSave: async student => {
+        student.dataMatricula = new Date();
         student.matricula = `${Date.now()}-${student.nome.slice(0,3)}`;
       }
     }
